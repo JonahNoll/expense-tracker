@@ -1,5 +1,8 @@
 import csv
+from gettext import install
 from os import readv
+import matplotlib
+from matplotlib import pyplot as plt
 
 
 def add_expense():
@@ -50,7 +53,27 @@ def show_summary():
         print(c, f'${p:.2f}')
 
 def show_charts():
-    pass
+    category_totals = {}
+
+    with open('data/expenses.csv', mode='r') as file:
+        reader = csv.reader(file)
+        next(reader)
+        for row in reader:
+            category = row[1]
+            amount = float(row[3])
+            if category in category_totals:
+                category_totals[category] += amount
+            else:
+                category_totals[category] = amount
+
+    labels = list(category_totals.keys())
+    sizes = list(category_totals.values())
+
+    plt.figure(figsize=(6, 6))
+    plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
+    plt.title('Spending by Category')
+    plt.axis('equal')
+    plt.show()
 
 def main():
     while True:
