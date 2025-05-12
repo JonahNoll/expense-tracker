@@ -1,6 +1,4 @@
 import csv
-from gettext import install
-from os import readv
 import matplotlib
 from matplotlib import pyplot as plt
 
@@ -86,14 +84,18 @@ def main():
         choice = int(input("Choose an option: "))
         if choice == 1:
             add_expense()
-        if choice == 2:
+        elif choice == 2:
             view_expenses()
-        if choice == 3:
+        elif choice == 3:
             filter_expenses()
-        if choice == 4:
+        elif choice == 4:
             show_summary()
-        if choice == 6:
+        elif choice == 5:
+            show_charts()
+        elif choice == 6:
             exit()
+        else:
+            print("Invalid choice. Please select a number 1-6")
 
 if __name__ == "__main__":
     main()
