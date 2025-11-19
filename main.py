@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 
 def add_expense():
     date        = input("Enter the date (YEAR-MM-DD): ")
-    category    = input("Enter the category: ")
+    category    = input("Enter the category: ").lower()
     description = input("Description: ")
     amount      = float(input("Enter the amount: "))
     with open('data/expenses.csv', mode='a', newline='') as file:
@@ -47,8 +47,8 @@ def show_summary():
     print(f'Total spent: ${total_spent}')
     print(f'Total number of transactions: {total_transactions}')
     print(f'Category expenditure: ')
-    for c, p in category_totals.items():
-        print(c, f'${p:.2f}')
+    for category, spend in category_totals.items():
+        print(category, f'${spend:.2f}')
 
 def show_charts():
     category_totals = {}
@@ -75,12 +75,12 @@ def show_charts():
 
 def main():
     while True:
-        print("1. Add new expense")
+        print("\n1. Add new expense")
         print("2. View all expenses")
         print("3. Filter expenses")
         print("4. View summary")
         print("5. Show charts")
-        print("6. Exit")
+        print("6. Exit\n")
         choice = int(input("Choose an option: "))
         if choice == 1:
             add_expense()
