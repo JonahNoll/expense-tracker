@@ -1,0 +1,17 @@
+# Use your text editor to put these contents into the file: .gitignore
+# ------------------------------------------------------------------
+
+# Virtual Environment
+.venv/
+
+# Dependencies
+node_modules/
+
+# Local data (if you don't want CSV/local data tracked)
+data/
+
+# IDE files (Your issue was here!)
+.idea/
+
+# Operating System Files
+.DS_Store
